@@ -1,233 +1,395 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <title>FARM CAPYZOU</title>
-    <style>
-        .container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: nowrap;
-        }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIMEN | Visual Essay Book</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .item {
-            width: 100px;
-            height: 100px;
-            background-color: rgb(255, 229, 171);
-            border: 1px solid rgb(255, 187, 187);
-            border-radius: 15px;
-            text-align: center;
-            line-height: 30px;
-        }
+    body{
+      background: #f2f0eb;
+      color: #111;
+      font-family: "Times New Roman", "Noto Serif KR", serif;
+      overflow-x: hidden;
+    }
 
-        body {
-  background-image: url(../images/bg.png);
-  font-size: 16px;
-  font-family: 'arial','Apple SD Gothic Neo','NanumGothic',sans-serif;
-  color: #000000;
-}
-header {
-  width: 1240px;
-  margin: 0 auto 44px;
-}
-h1 {
-  text-align: center;
-  padding: 20px 0px 16px;
-}
-header nav ul {
-  display: flex;
-  justify-content: center;
-  border-top: 2px solid #7c5d48;
-  border-bottom: 2px solid #7c5d48;
-  background-color: rgba(255,255,255,0.42);
-  padding: 12px 0px 10px;
-}
-header nav ul li {
-  margin: 0 20px;
-}
-header nav ul li a {
-  font-size: 22px;
-  font-weight: bold;
-  color: #7c5d48;
-}
-header nav ul li a:hover {
-  text-decoration: underline double;
-}
-div {
-  width: 1240px;
-  margin: 0 auto 50px;
-  display: flex;
-  justify-content: space-between;
-}
-main {
-  flex-basis: 920px;
-  background-color: #fef7eb;
-  border-radius: 16px;
-  padding: 62px 72px 32px 72px;
-  box-shadow: 0px 0px 8px rgba(0,0,0,0.16);
-}
-aside {
-  flex-basis: 284px;
-}
-aside nav {
-  border-radius: 16px;
-  background-color: #fcf2d8;
-  box-shadow: 0px 0px 8px rgba(0,0,0,0.16);
-  padding: 24px 28px;
-  margin-bottom: 24px;
-}
-aside nav h2 {
-  margin-bottom: 18px;
-  font-size: 22px;
-  font-weight: bold;
-  color: #7c5d48;
-}
-aside nav ul {
-  font-size: 14px;
-}
-.categoryNav ul li {
-  list-style-type: square;
-  color: #7c5d48;
-  margin: 0 0 16px 20px;
-}
-.categoryNav ul li a {
-  color: #333333;
-}
-.recentNav ul li {
-  border-bottom: 1px solid #7c5d48;
-  padding-bottom: 10px;
-  margin-bottom: 22px;
-}
-.recentNav ul {
-  height: 240px;
-  overflow: hidden scroll;
-}
-article h2 {
-  font-size: 40px;
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-time {
-  background-color: #91c777;
-  border-radius: 22px 22px 22px 22px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #ffffff;
-  padding: 11px 23px 10px 18px;
-  display: inline-block;
-}
-.postdate {
-  margin-bottom: 26px;
-}
-.eyecatch {
-  margin-bottom: 26px;
-}
-article h3 {
-  border-bottom: 2px solid #6ab547;
-  margin-bottom: 20px;
-  font-size: 28px;
-  font-weight: 600;
-  background-image: url(../images/h2_icon.png);
-  background-repeat: no-repeat;
-  background-position: left bottom;
-  padding: 20px 10px 10px 48px;
-}
-article section p {
-  line-height: 1.6;
-  margin-bottom: 24px;
-}
-article section {
-  margin-bottom: 50px;
-}
-footer {
-  background-color: #523f2e;
-  color: #ffffff;
-  text-align: center;
-  padding: 14px 10px 20px;
-}
+    section{
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      padding: 62px 76px 48px;
+      background: #f2f0eb;
+      overflow: hidden;
+    }
 
-    </style>
-  </head>
-  <body>
+    .grain{
+      position: absolute;
+      inset: 0;
+      opacity: .08;
+      pointer-events: none;
+      background-image: radial-gradient(#111 0.7px, transparent 0.7px);
+      background-size: 8px 8px;
+      z-index: 1;
+    }
+
+    header{
+      position: relative;
+      z-index: 5;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .logo{
+      color: #111;
+      text-decoration: none;
+      font-size: 26px;
+      line-height: .9;
+      letter-spacing: 2px;
+      font-weight: 400;
+    }
+
+    .logo span{
+      display: block;
+      margin-left: 38px;
+    }
+
+    nav ul{
+      display: flex;
+      gap: 38px;
+      list-style: none;
+    }
+
+    nav a{
+      color: #111;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .hero{
+      position: relative;
+      z-index: 4;
+      min-height: calc(100vh - 130px);
+      display: grid;
+      grid-template-columns: 1fr 430px;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .left-area{
+      position: relative;
+      max-width: 760px;
+    }
+
+    .label{
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    h1{
+      font-size: clamp(70px, 9vw, 142px);
+      font-weight: 400;
+      letter-spacing: -6px;
+      line-height: .78;
+    }
+
+    h1 .break{
+      display: block;
+      margin-left: 140px;
+    }
+
+    .subtitle{
+      margin-top: 38px;
+      max-width: 470px;
+      font-size: 17px;
+      line-height: 1.9;
+      word-break: keep-all;
+    }
+
+    .quote{
+      position: absolute;
+      left: 420px;
+      bottom: -82px;
+      font-size: 34px;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      color: rgba(17,17,17,.42);
+      white-space: nowrap;
+    }
+
+    .book-btn{
+      display: inline-block;
+      margin-top: 38px;
+      padding: 12px 24px;
+      border: 1px solid #111;
+      color: #111;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: .3s;
+    }
+
+    .book-btn:hover{
+      background: #111;
+      color: #f2f0eb;
+    }
+
+    .visual-area{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 560px;
+    }
+
+    .stripe-card{
+      position: absolute;
+      width: 360px;
+      height: 500px;
+      background: repeating-linear-gradient(
+        0deg,
+        #111 0px,
+        #111 5px,
+        #f2f0eb 5px,
+        #f2f0eb 10px
+      );
+      overflow: hidden;
+      transform: rotate(-2deg);
+      box-shadow: 0 28px 70px rgba(0,0,0,.22);
+    }
+
+    .stripe-card::after{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 45% 46%, transparent 0 32%, rgba(17,17,17,.88) 33% 36%, transparent 37% 100%);
+      mix-blend-mode: multiply;
+      opacity: .7;
+    }
+
+    .mainImage{
+      position: relative;
+      width: 260px;
+      height: 365px;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.14);
+      box-shadow: 0 26px 60px rgba(0,0,0,.26);
+      z-index: 3;
+      transition: .4s;
+    }
+
+    .vertical-title{
+      position: absolute;
+      right: -8px;
+      top: 48px;
+      writing-mode: vertical-rl;
+      font-size: 42px;
+      letter-spacing: 12px;
+      color: #111;
+      z-index: 4;
+    }
+
+    .chapter-number{
+      position: absolute;
+      right: -20px;
+      bottom: 14px;
+      font-size: 74px;
+      font-style: italic;
+      color: #111;
+      z-index: 4;
+    }
+
+    .chapters{
+      position: absolute;
+      left: 76px;
+      bottom: 44px;
+      z-index: 5;
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .chapters li{
+      width: 150px;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .chapters li:hover{
+      transform: translateY(-8px);
+    }
+
+    .chapters img{
+      width: 150px;
+      height: 86px;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.1);
+      border: 1px solid rgba(17,17,17,.2);
+    }
+
+    .chapters p{
+      margin-top: 9px;
+      font-size: 12px;
+      line-height: 1.35;
+      letter-spacing: .6px;
+    }
+
+    .side-info{
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      writing-mode: vertical-rl;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      z-index: 5;
+    }
+
+    .page-mark{
+      position: absolute;
+      right: 76px;
+      bottom: 46px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      z-index: 5;
+    }
+
+    @media(max-width: 960px){
+      section{
+        padding: 34px 26px 180px;
+      }
+
+      header{
+        gap: 20px;
+      }
+
+      nav ul{
+        gap: 18px;
+      }
+
+      nav a{
+        font-size: 11px;
+      }
+
+      .hero{
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding-top: 70px;
+      }
+
+      h1 .break{
+        margin-left: 68px;
+      }
+
+      .quote{
+        position: relative;
+        left: 0;
+        bottom: auto;
+        margin-top: 38px;
+        font-size: 26px;
+        white-space: normal;
+      }
+
+      .visual-area{
+        min-height: 440px;
+      }
+
+      .stripe-card{
+        width: 290px;
+        height: 400px;
+      }
+
+      .mainImage{
+        width: 220px;
+        height: 310px;
+      }
+
+      .chapters{
+        left: 26px;
+        right: 26px;
+        bottom: 42px;
+        overflow-x: auto;
+      }
+
+      .side-info{
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <div class="grain"></div>
+
     <header>
-      <h1><img src="image copy 4.png" alt="FARM CAPYZOU"></h1>
+      <a href="#" class="logo">L I<span>MEN</span></a>
       <nav>
         <ul>
-          
-        <li><a href="#"><a href=" class="btn>ABOUT</a></a></li>
-          <li><a href="#"><a href="https://www.instagram.com/" class="btn">BLOG</a></a></li>
-          <li><a href="#"><a href="https://search.shopping.naver.com/search/all?where=all&frm=NVSCTAB&query=%EC%87%BC%ED%95%91" class="btn">SHOP</a></a></li>
-          <li><a href="#"><a href="https://www.youtube.com/?hl=ko&gl=KR&app=desktop" class="btn">CONTACT</a></a></li>
+          <li><a href="#">Intro</a></li>
+          <li><a href="#">Chapter</a></li>
+          <li><a href="#">Archive</a></li>
+          <li><a href="#">About</a></li>
         </ul>
       </nav>
     </header>
-    <main>
-      <article>
-        <h2>당근 농장의 하루를 소개합니다</h2>
-        <p>
-          <time datetime="2026-04-13T13:13">
-            2026년 4월 13일 오후 1시 13분
-          </time>
+
+    <main class="hero">
+      <div class="left-area">
+        <div class="label">Visual Essay Book / A5 / 100 Pages</div>
+        <h1>Unfinished<span class="break">Moments</span></h1>
+        <p class="subtitle">
+          경계 위에 머물며, 스스로 선택하는 과정에 대한 이야기.
+          LIMEN은 문턱 위에 선 순간들을 이미지와 문장으로 기록한 비주얼 에세이 북입니다.
         </p>
-        <p>
-          <img src="image copy 2.png" alt="농원에 있는 카피조우 그림">
-        </p>
-        <section>
-          <h3>6:00~ 당근 수확과 아침 식사</h3>
-          <p>아침에는 6시쯤 일어납니다. 언제까지나 이불 속에 파묻혀 있고 싶지만, 영차! 하고 힘내서 일어납니다.<br>밖에 나가면 먼저 해님에게 '안녕, 좋은 아침이에요.'라고 인사.</p>
-          <p>
-            그다음 잘 여문 당근을 수확합니다.<br>
-            못난이 당근은 제가 아침밥으로 먹습니다.<br>
-            수확을 하면서 아침도 해결할 수 있어서 무척 효율적입니다!<br>
-          </p>
-          <figure>
-            <img src="image copy.png" alt="못난이 당근 그림">
-            <figcaption>모양이 못생겨서 내가 먹은 당근들</figcaption>
-          </figure>
-        </section>
-        <section>
-          <h3>8:30~12:30 슈퍼마켓이나 휴게소로 출하</h3>
-          <p>아침에 캔 당근을 산지 직송 매장으로 운반합니다. 일과 중 가장 힘을 써야 하는 일이네요.<br>슬슬 리어카가 아니라 전기로 움직이는 차를 구입해볼까 생각하고 있어요.</p>
-        </section>
-        <section>
-          <h3>12:30~18:00 밭일과 저녁 식사</h3>
-          <p>당근의 상태를 보면서 물을 주거나, 벌레를 잡거나, 비닐을 씌우거나 합니다.<br>지금은 당근이 메인이지만, 장기적으로는 더 많은 작물을 키우고 싶어서 관련 준비도 같이 하고 있습니다.</p>
-        </section>
-        <section>
-          <h3>18:30~ 목욕과 취침</h3>
-          <p>느긋하게 목욕을 하고 잠자리에 듭니다. 이불 속은 천국입니다.</p>
-        </section>
-      </article>
+        <a class="book-btn" href="#">Explore Book</a>
+        
+      </div>
+
+      <div class="visual-area">
+        <div class="stripe-card"></div>
+        <img src="./imgs/limen1.jpg" alt="LIMEN visual" class="mainImage">
+        <div class="vertical-title">LIMEN</div>
+        <div class="chapter-number"></div>
+      </div>
     </main>
-    <aside>
-      <nav>
-        <h2>Category</h2>
-        <ul>
-          <li><a href="#"><a href="https://www.youtube.com/?hl=ko&gl=KR&app=desktop" class="btn">농가의 일상(4)</a></li>
-          <li><a href="#"><a href="https://www.youtube.com/?hl=ko&gl=KR&app=desktop" class="btn">채소 재배 노하우(5)</a></li>
-          <li><a href="#"><a href="https://www.youtube.com/?hl=ko&gl=KR&app=desktop" class="btn">카피조우 레시피(2)</a></li>
-          <li><a href="#"><a href="https://www.youtube.com/?hl=ko&gl=KR&app=desktop" class="btn">농장 경영(2)</a></li>
-        </ul>
-      </nav>
-      <nav>
-        <h2>Recent Articles</h2>
-        <ul>
-          <li><a href="#"><a href="https://youtu.be/8INCrYSLamo?si=OybbooGzvhIRB4tp" class="btn">온실 재배 주의할 점 TOP10</a></li>
-          <li><a href="#"><a href="https://youtu.be/pYuZ-9foWyI?si=YiFBNxAiDfbOu9I7" class="btn">현역 농부가 해충 퇴치법을 알려드립니다</a></li>
-          <li><a href="#"><a href="https://youtu.be/ngb9yE60xtM?si=1aqYGJpb8OPzNMoN" class="btn">집에서도 가능! 화분 재배의 핵심</a></li>
-          <li><a href="#"><a href="https://youtu.be/e9eDPz3MMwM?si=Pm43DWvvsCfUfYKa" class="btn">간단하게 만드는 당근 요리 소개!</a></li>
-          <li><a href="#"><a href="https://youtube.com/shorts/NO-Q0WMn0Qo?si=EV77ArzgSxA3Ml-c" class="btn">농사지어서 먹고살 수 있을까? 제일 궁금해하는 연 수입 대공개</a></li>
-          <li><a href="#"><a href="" class="btn">안녕하세요. FARM CAPYZOU입니다.</a></li>
-        </ul>
-      </nav>
-      <p>
-        <li><a href="#"><img src="image copy 5.png" alt="온라인 샵 배너"></a></li>
-      </p>
-    </aside>
-    <footer>
-      <p><small>© 3023 FARM CAPYZOU</small></p>
-    </footer>
-  </body>
+
+    <ul class="chapters">
+      <li onclick="changeChapter('./imgs/limen1.jpg', '10', 'We Exist in Unfinished Moments.')">
+        <img src="./imgs/limen2.jpg" alt="Chapter 1">
+        <p>01 바깥의 빛</p>
+      </li>
+      <li onclick="changeChapter('./imgs/limen2.jpg', '14', 'The Outside Was Always Getting Brighter.')">
+        <img src="./imgs/limen3.jpg" alt="Chapter 2">
+        <p>02 오지 않는 시간</p>
+      </li>
+      <li onclick="changeChapter('./imgs/limen3.jpg', '32', 'In the Hour That Never Came.')">
+        <img src="./imgs/limen4.jpg" alt="Chapter 3">
+        <p>03 닿지 않는 거리</p>
+      </li>
+    </ul>
+
+    <div class="side-info">LIMEN / Editorial Web Experience</div>
+    <div class="page-mark">01 — 03</div>
+  </section>
+
+  <script>
+    function changeChapter(image, number, quote){
+      document.querySelector('.mainImage').src = image;
+      document.querySelector('.chapter-number').textContent = number;
+      document.querySelector('.quote').textContent = quote;
+    }
+  </script>
+</body>
 </html>
+
